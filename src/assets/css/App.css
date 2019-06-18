@@ -1,0 +1,9 @@
+.sent-time {
+    font-size: 10px;
+    margin-left: 5px;
+}
+
+.scrollable {
+    overflow: scroll;
+    height: 50vh;
+}

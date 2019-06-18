@@ -1,0 +1,9 @@
+@charset "utf-8";
+
+// Table
+$table-cell-border-width: 0 0 0;
+$table-background-color: hsl(48, 100%, 67%);
+$table-striped-row-even-background-color: rgba(0, 0, 0, 0.05);
+
+
+@import "../../../node_modules/bulma/bulma.sass";

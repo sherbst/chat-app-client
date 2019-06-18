@@ -38,25 +38,40 @@ class App extends Component {
         });
     }
 
+    // && this.state.connected && this.state.username
+
     render () {
-        if(this.state.connected) {
-            return(
-                <Router>
-                    <Switch>
-                        <Route exact path="/" component={RegisterPage} />
-                        <Route exact path="/rooms/:room" component={RoomPage} />
-                        <Route path="/" component={NotFound} />
-                    </Switch>
-                </Router>
-            );
-        } else {
-            return(
-                <div className="section">
-                    <div className="container">
-                        <p>Loading...</p>
-                    </div>
+
+        var routes = (
+            <Router>
+                <Switch>
+                    <Route exact path="/" component={RegisterPage} />
+                    <Route exact path="/rooms/:room" component={RoomPage} />
+                    <Route path="/" component={NotFound} />
+                </Switch>
+            </Router>
+        );
+
+        var loading = (
+            <div className="section">
+                <div className="container">
+                    <p>Loading...</p>
                 </div>
-            )
+            </div>
+        )
+
+        if(sessionStorage.getItem('username')) {
+            if(this.state.connected && this.state.username) {
+                return routes;
+            } else {
+                return loading;
+            }
+        } else {
+            if(this.state.connected) {
+                return routes;
+            } else {
+                return loading;
+            }
         }
     }
 }

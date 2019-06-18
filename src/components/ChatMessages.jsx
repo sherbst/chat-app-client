@@ -18,13 +18,13 @@ class ChatMessages extends Component {
                 var leftUser = this.state.roomActiveUsers.find(oldUser => {
                     return !roomActiveUsers.find(newUser => newUser === oldUser)
                 });
-                var message = { message: `${leftUser} left the room.`, date: Date.now(), type: 'update' }
+                var message = { message: `${leftUser} left the room.`, date: Date.now(), type: 'server' }
             } else {
                 // A user joined
                 var joinedUser = roomActiveUsers.find(oldUser => {
                     return !this.state.roomActiveUsers.find(newUser => newUser === oldUser)
                 });
-                var message = { message: `${joinedUser} joined the room.`, date: Date.now(), type: 'update' }
+                var message = { message: `${joinedUser} joined the room.`, date: Date.now(), type: 'server' }
             }
 
             this.setState({

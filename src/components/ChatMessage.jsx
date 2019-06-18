@@ -1,27 +1,25 @@
 import React from 'react';
 import SentTime from './SentTime';
+import styleParser from '../lib/styleParser';
 
 function ChatMessage ({ message }) {
 
     var newMessage = message.message;
 
-    // var userPattern = /^.*(user:(.*?)) .*$/
-    // if(userPattern.test(message.message)) {
-    //     let match = userPattern.exec(message.message);
-    //     var newMessageSplit = newMessage.split(match[1])
-    //     console.log(newMessageSplit)
-    //     newMessage = <span>{newMessageSplit[0]}<strong>{ newMessageSplit[1] }</strong>{newMessageSplit[1]}</span>
-    // }
+    // Is message parsed as HTML or with style tags (like YT) which in turn will be parsed as HTML;
+    if(message.parser === 'style' || !message.parser) {
+        newMessage = styleParser(newMessage);
+    }
 
-    // Type: update, user, whisper
-    if(message.type === 'update') {
-        var messageTableData = <td><em>{ newMessage }</em></td>
+    // Purpose (and icon) of message
+    if(message.type === 'server') {
+        var messageTableData = <td><em><span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span></em></td>
     } else if (message.type === 'user') {
-        var messageTableData = <td><strong>{ message.from }: </strong>{ newMessage } <SentTime date={message.date} /></td>
+        var messageTableData = <td><strong>{ message.from }: </strong><span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span> <SentTime date={message.date} /></td>
     }
 
     return (
-        <tr className="chat-message">
+        <tr className="chat-message-row">
             { messageTableData }
         </tr>
     )

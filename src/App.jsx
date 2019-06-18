@@ -38,8 +38,6 @@ class App extends Component {
         });
     }
 
-    // && this.state.connected && this.state.username
-
     render () {
 
         var routes = (

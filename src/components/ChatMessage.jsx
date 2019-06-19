@@ -3,8 +3,9 @@ import SentTime from './SentTime';
 import styleParser from '../lib/styleParser';
 
 // Font Awesome
-import { faBullhorn, faArrowsAltH, faExclamation } from '@fortawesome/free-solid-svg-icons'
+import { faBullhorn, faExclamation, faShare, faReply } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import api from '../lib/api';
 
 function ChatMessage ({ message }) {
 
@@ -27,7 +28,10 @@ function ChatMessage ({ message }) {
             var messageIcon = faExclamation;
             break;
         case 'whisper':
-            var messageTableData = <em>{message.from} whispers to you: <span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span></em>
+            var messageTableData = <em><span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span></em>
+            // Sending or recieving?
+            var messageIcon = message.from === api.getUsername() ? faShare : faReply;
+            break;
         case 'user':
             var messageTableData = (
                 <>

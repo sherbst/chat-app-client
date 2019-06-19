@@ -2,7 +2,6 @@ import io from 'socket.io-client';
 const socket = io(`//${process.env.REACT_APP_SERVER_HOSTNAME}`);
 
 var isUser = false;
-var username = '';
 
 var api = {
     socket,
@@ -54,6 +53,10 @@ var api = {
     sendMessage (message) {
         socket.send(message);
     },
+
+    getUsername () {
+        return sessionStorage.getItem('username');
+    }
 }
 
 export default api;

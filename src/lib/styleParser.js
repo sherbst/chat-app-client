@@ -5,8 +5,8 @@ function styleParser (str) {
     var effects = [
         {
             pattern: /_(.*)_/,
-            start: '<em>',
-            end: '</em>'
+            start: '<span style="text-decoration: underline">',
+            end: '</span>'
         },
         {
             pattern: /-(.*)-/,
@@ -17,6 +17,11 @@ function styleParser (str) {
             pattern: /\*(.*)\*/,
             start: '<strong>',
             end: '</strong>'
+        },
+        {
+            pattern: /%(.*)%/,
+            start: '<em>',
+            end: '<em>'
         }
     ];
 

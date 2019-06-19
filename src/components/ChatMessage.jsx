@@ -5,6 +5,7 @@ import styleParser from '../lib/styleParser';
 // Font Awesome
 import { faBullhorn, faExclamation, faShare, faReply } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import api from '../lib/api';
 
 function ChatMessage ({ message }) {

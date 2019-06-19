@@ -7,3 +7,7 @@
     overflow: scroll;
     height: 50vh;
 }
+
+.chat-message-icon {
+    width: 16px;
+}

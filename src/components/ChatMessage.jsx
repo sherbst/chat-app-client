@@ -2,6 +2,10 @@ import React from 'react';
 import SentTime from './SentTime';
 import styleParser from '../lib/styleParser';
 
+// Font Awesome
+import { faBullhorn, faArrowsAltH, faExclamation } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 function ChatMessage ({ message }) {
 
     var newMessage = message.message;
@@ -12,15 +16,31 @@ function ChatMessage ({ message }) {
     }
 
     // Purpose (and icon) of message
-    if(message.type === 'server') {
-        var messageTableData = <td><em><span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span></em></td>
-    } else if (message.type === 'user') {
-        var messageTableData = <td><strong>{ message.from }: </strong><span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span> <SentTime date={message.date} /></td>
+    var messageIcon;
+    switch(message.type) {
+        case 'server':
+            var messageTableData = <em><span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span></em>
+            var messageIcon = faBullhorn
+            break;
+        case 'command-response':
+            var messageTableData = <em><span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span></em>
+            var messageIcon = faExclamation;
+            break;
+        case 'whisper':
+            var messageTableData = <em>{message.from} whispers to you: <span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span></em>
+        case 'user':
+            var messageTableData = (
+                <>
+                    <strong>{ message.from }: </strong><span className="chat-message" dangerouslySetInnerHTML={{ __html: newMessage }}></span> <SentTime date={message.date} />
+                </>
+            );
+            break;
     }
 
     return (
         <tr className="chat-message-row">
-            { messageTableData }
+            <td className="chat-message-icon"><FontAwesomeIcon icon={messageIcon} size="xs" /></td>
+            <td>{ messageTableData }</td>
         </tr>
     )
 }

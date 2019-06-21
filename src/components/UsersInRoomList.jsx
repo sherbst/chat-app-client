@@ -44,7 +44,9 @@ class UsersList extends Component {
                     Room: {this.props.roomHandle}
                 </p>
                 <p><em>{this.state.users.length} users connected.</em></p>
-                { this.state.users.map(username => <User key={username} username={username} />) }
+                <div className="scrollable">
+                    { this.state.users.map(username => <User key={username} username={username} />) }
+                </div>
             </div>
         );
     }

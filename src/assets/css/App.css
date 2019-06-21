@@ -5,6 +5,9 @@
 
 .scrollable {
     overflow: scroll;
+}
+
+#chat {
     height: 50vh;
 }
 

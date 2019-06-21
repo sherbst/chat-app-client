@@ -43,7 +43,7 @@ class ChatMessages extends Component {
 
     render () {
         return (
-            <div className="scrollable">
+            <div className="scrollable" id="chat">
                 <table className="table is-striped is-fullwidth">
                     <tbody>
                         { this.state.messages.map(m => <ChatMessage key={m.message + m.date} message={m} />) }

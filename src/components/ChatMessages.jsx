@@ -12,6 +12,8 @@ class ChatMessages extends Component {
     }
 
     componentDidMount() {
+        this.adjustScrolling();
+
         api.onRoomActiveUsers((roomActiveUsers) => {
             if(this.state.roomActiveUsers.length > roomActiveUsers.length) {
                 // A user left
@@ -41,10 +43,20 @@ class ChatMessages extends Component {
         })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        this.adjustScrolling();
+    }
+
+    adjustScrolling () {
+        // Automatically scrolls to bottom.
+        var elem = document.getElementById('chat');
+        elem.scrollTop = elem.scrollHeight;
+    }
+
     render () {
         return (
             <div className="scrollable" id="chat">
-                <table className="table is-striped is-fullwidth">
+                <table className="alternating-table">
                     <tbody>
                         { this.state.messages.map(m => <ChatMessage key={m.message + m.date} message={m} />) }
                     </tbody>

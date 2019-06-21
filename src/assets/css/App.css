@@ -14,3 +14,16 @@
 .chat-message-icon {
     width: 16px;
 }
+
+/* Table */
+.alternating-table {
+    width: 100%;
+}
+
+.alternating-table td, .alternating-table th {
+    padding: 0.5em 0.75em;
+}
+
+.alternating-table tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.05)
+}

@@ -24,7 +24,17 @@ class UsersList extends Component {
         copy(window.location.href, {
             message: 'Press #{key} to copy',
         });
-        this.props.toggleShareModal();
+        this.props.setModalContent({
+            head: <h1 className="title">Share Room</h1>,
+            body:
+                <>
+                <p><strong>The link to this room has been copied to your clipboard.</strong> You can give this link to anyone to allow them to join the chat.</p>
+                <p>Otherwise, you can copy the link below manually.</p>
+                <p><strong>{ window.location.href }</strong></p>
+                </>
+        }, () => {
+            this.props.toggleModal();
+        });
     }
 
     render() { 

@@ -27,3 +27,11 @@
 .alternating-table tr:nth-child(even) {
     background-color: rgba(0, 0, 0, 0.05)
 }
+
+#commands th  {
+    color: white;
+}
+
+.spacer {
+    margin-top: 30px;
+}

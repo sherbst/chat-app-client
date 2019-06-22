@@ -36,7 +36,7 @@ class UsersList extends Component {
                             <h1 className="title">Room</h1>
                         </div>
                         <div className="level-item">
-                            <a onClick={this.onShare} className="button is-info is-small is-rounded"><span style={{ marginRight: 10 }}>Share Room</span><FontAwesomeIcon icon={faCopy} /></a>
+                            <a onClick={this.onShare} className="button is-small is-rounded"><span style={{ marginRight: 10 }}>Share Room</span><FontAwesomeIcon icon={faCopy} /></a>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import api from '../lib/api';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 
 class ChatForm extends Component {
     constructor(props) {
@@ -21,9 +23,14 @@ class ChatForm extends Component {
             <form autoComplete="off" onSubmit={this.onSubmit}>
                 <p className="title">Send Message</p>
                 <p className="subtitle">Hit <em>Enter</em> to send.</p>
-                <div className="field">
-                    <div className="control">
+                <div className="field is-grouped">
+                    <div className="control is-expanded">
                         <input className="input is-rounded is-warning" id="message-input" type="text" placeholder="Type a message..." />
+                    </div>
+                    <div className="control is-hidden-tablet">
+                        <button type="submit" className="button is-rounded">
+                            <FontAwesomeIcon icon={faPaperPlane} />
+                        </button>
                     </div>
                 </div>
             </form>

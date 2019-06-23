@@ -27,8 +27,12 @@ class RoomPage extends Component {
         window.location.reload();
     }
 
-    toggleModal () {
-        this.setState({ modalActive: !this.state.modalActive });
+    toggleModal (active) {
+        if(typeof active === 'boolean') {
+            this.setState({ modalActive: active });
+        } else {
+            this.setState({ modalActive: !this.state.modalActive });
+        }
     }
 
     setModalContent (content, cb) {
